@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第13回 岩村城下町ひなクラフトフェア 2027 | 出展者募集</title>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #c0392b;
+      --pink: #e8a0a0;
+      --light-pink: #fdf0f0;
+      --cream: #faf6f0;
+      --dark: #2c1a1a;
+      --mid: #6b3a3a;
+      --gold: #b8860b;
+      --border: #d4a0a0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 17px;
+      background-color: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ヘッダー */
+    header {
+      position: relative;
+      background: url('header.png') center center / cover no-repeat;
+      padding: 60px 20px 50px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.15) 0%,
+        rgba(0,0,0,0.45) 60%,
+        rgba(44,26,26,0.7) 100%
+      );
+    }
+
+    .header-inner { position: relative; z-index: 1; }
+
+    .hina-deco {
+      font-size: 2rem;
+      letter-spacing: 0.5em;
+      color: var(--pink);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    header h1 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: 0.08em;
+    }
+
+    header h1 span {
+      color: var(--pink);
+    }
+
+    .year-badge {
+      display: inline-block;
+      margin-top: 16px;
+      background: var(--red);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 6px 20px;
+      letter-spacing: 0.2em;
+    }
+
+    .subtitle {
+      margin-top: 14px;
+      color: rgba(255,255,255,0.85);
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+    }
+
+    /* セクション共通 */
+    section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .section-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--mid);
+      border-left: 4px solid var(--red);
+      padding-left: 16px;
+      margin-bottom: 32px;
+      letter-spacing: 0.05em;
+    }
+
+    /* 概要 */
+    .about-section {
+      background: #fff;
+      border-top: 4px solid var(--red);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .about-grid { grid-template-columns: 1fr; }
+    }
+
+    .about-card {
+      background: var(--light-pink);
+      border: 1px solid var(--border);
+      padding: 24px;
+      border-radius: 2px;
+    }
+
+    .about-card .label {
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      color: var(--red);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .about-card .value {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--dark);
+      line-height: 1.8;
+    }
+
+    .about-card.wide {
+      grid-column: 1 / -1;
+    }
+
+    .about-desc {
+      font-size: 1rem;
+      line-height: 2;
+      color: var(--mid);
+    }
+
+    /* 区切り */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+      margin: 0 24px;
+    }
+
+    /* GoogleMAP */
+    .map-section { background: var(--light-pink); }
+
+    .map-wrap {
+      border: 2px solid var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(192,57,43,0.1);
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 400px;
+      display: block;
+      border: none;
+    }
+
+    .map-note {
+      margin-top: 12px;
+      font-size: 0.92rem;
+      color: var(--mid);
+      text-align: center;
+    }
+
+    /* 出展ルール */
+    .rules-section { background: #fff; }
+
+    .rules-list {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .rules-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .rules-list li::before {
+      content: '◆';
+      color: var(--red);
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 0.75rem;
+    }
+
+    /* 出展料 */
+    .fee-section { background: var(--dark); }
+    .fee-section .section-title { color: var(--pink); }
+
+    .fee-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 500px) {
+      .fee-cards { grid-template-columns: 1fr; }
+    }
+
+    .fee-card {
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 32px 24px;
+      text-align: center;
+      position: relative;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .fee-card.recommended {
+      border-color: var(--red);
+      background: rgba(192,57,43,0.12);
+    }
+
+    .fee-card.recommended::before {
+      content: 'おすすめ';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--red);
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 3px 12px;
+      letter-spacing: 0.1em;
+    }
+
+    .fee-days {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.1rem;
+      color: var(--pink);
+      margin-bottom: 12px;
+      letter-spacing: 0.1em;
+    }
+
+    .fee-price {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .fee-price span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* 応募フォーム */
+    .form-section { background: var(--light-pink); }
+
+    .form-note {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 2px;
+      padding: 14px 18px;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 28px;
+      color: #6b4800;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--mid);
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    .form-group label .required {
+      color: var(--red);
+      margin-left: 4px;
+      font-size: 0.75rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: #fff;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.95rem;
+      color: var(--dark);
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--red);
+    }
+
+    .form-group textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 500px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    .file-note {
+      font-size: 0.88rem;
+      color: var(--mid);
+      margin-top: 6px;
+    }
+
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 18px;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      margin-top: 28px;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .submit-btn:hover {
+      background: #a93226;
+      transform: translateY(-1px);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* フッター */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+    }
+
+    footer .footer-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1rem;
+      color: var(--pink);
+      margin-bottom: 8px;
+    }
+
+    /* アニメーション */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeInUp 0.7s ease forwards;
+    }
+
+    .fade-in:nth-child(1) { animation-delay: 0.1s; }
+    .fade-in:nth-child(2) { animation-delay: 0.2s; }
+    .fade-in:nth-child(3) { animation-delay: 0.3s; }
+    .fade-in:nth-child(4) { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header>
+  <div class="header-inner">
+    <span class="hina-deco">🎎</span>
+    <h1>第13回 岩村城下町<br><span>ひなクラフトフェア</span></h1>
+    <div class="year-badge">2027</div>
+    <p class="subtitle">岩村町ひなまつり協賛イベント｜出展者募集</p>
+  </div>
+</header>
+
+<!-- 概要 -->
+<section class="about-section">
+  <h2 class="section-title">開催概要</h2>
+  <div class="about-grid">
+    <div class="about-card fade-in">
+      <div class="label">開催日時</div>
+      <div class="value">2027年3月13日（土）10:00〜15:00<br>2027年3月14日（日）10:00〜15:00<br><span style="font-size:0.88rem;color:var(--red);font-weight:400;font-family:'Noto Sans JP',sans-serif;">※ 日程は変更の可能性があります<br>※ 開催中は車両通行止め予定（10:00〜15:00）</span></div>
+    </div>
+    <div class="about-card fade-in">
+      <div class="label">開催場所</div>
+      <div class="value">岩村町西町一丁目<br>商店街</div>
+    </div>
+    <div class="about-card fade-in">
+      <div class="label">規模</div>
+      <div class="value">約20店舗</div>
+    </div>
+    <div class="about-card wide fade-in">
+      <div class="label">イベントについて</div>
+      <div class="about-desc">
+        本イベントは、毎年3月に開催される<strong>「岩村町ひなまつり」</strong>への協賛イベントです。<br>
+        ひなまつり期間中は、商店街をはじめ町内数か所に雛人形が飾られます。そのにぎわいのなかで、ハンドメイド作家や職人が西町一丁目商店街に集い、手作り作品を展示・販売します。
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 地図 -->
+<section class="map-section">
+  <h2 class="section-title">開催場所マップ</h2>
+  <div class="map-wrap">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d812.8!2d137.43480!3d35.32780!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601d5ef8e0000001%3A0x0!2z5bKh5p2R55S6IDMwMSDlt6XpmaLluILmiJDpg73luILlt6XpmaLnlJ8!5e0!3m2!1sja!2sjp!4v1700000000001!5m2!1sja!2sjp"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+  <p class="map-note">📍 〒509-7403 岐阜県恵那市岩村町301（西町一丁目商店街）</p>
+  <p style="text-align:center;margin-top:10px;">
+    <a href="https://www.google.com/maps/@35.3278,137.4348,3a,75y,0h,90t/data=!3m6!1e1!3m4!1s!2e0!7i16384!8i8192?hl=ja" target="_blank" rel="noopener" style="display:inline-block;background:var(--red);color:#fff;padding:10px 24px;font-size:0.88rem;letter-spacing:0.1em;text-decoration:none;font-family:'Noto Sans JP',sans-serif;">
+      🔍 ストリートビューで見る
+    </a>
+  </p>
+</section>
+
+<div class="divider"></div>
+
+<!-- 出展ルール -->
+<section class="rules-section">
+  <h2 class="section-title">出展ルール</h2>
+  <ul class="rules-list">
+    <li>ハンドメイド・手作り作品に限ります。既製品・転売品・古物はご参加いただけません。</li>
+    <li>食品の出展は不可とします。</li>
+    <li>商品はテーブルの上に布を敷いて陳列してください。</li>
+    <li>テントはご自身でご用意ください。サイズは 1.8m × 2.7m 以内とします。</li>
+    <li>応募の際は作品の写真または店舗の写真を添付してください（審査に使用します）。</li>
+    <li>応募多数の場合は審査のうえ出展者を決定します。審査結果はメールにてご連絡します。</li>
+  </ul>
+</section>
+
+<div class="divider"></div>
+
+<!-- 出展料 -->
+<section class="fee-section">
+  <h2 class="section-title">出展料</h2>
+  <div class="fee-cards">
+    <div class="fee-card">
+      <div class="fee-days">1日のみ参加</div>
+      <div class="fee-price">¥4,000<span> / 日</span></div>
+    </div>
+    <div class="fee-card recommended">
+      <div class="fee-days">2日間参加</div>
+      <div class="fee-price">¥6,000<span> / 全日</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- 応募フォーム -->
+<section class="form-section">
+  <h2 class="section-title">出展申し込み</h2>
+  <div class="form-note">
+    ⚠️ 応募後、審査を行います。結果はメールにてご連絡します。<br>
+    作品写真または店舗写真の添付が必須です。写真がない場合は審査対象外となりますのでご注意ください。
+  </div>
+
+  <form id="applicationForm">
+    <div class="form-row">
+      <div class="form-group">
+        <label>お名前（屋号）<span class="required">必須</span></label>
+        <input type="text" name="name" placeholder="例：山田 花子 / ハナコクラフト" required>
+      </div>
+      <div class="form-group">
+        <label>メールアドレス<span class="required">必須</span><span style="color:var(--mid);margin-left:8px;font-size:0.82rem;">※メールをお持ちでない方は電話番号のみでも可</span></label>
+        <input type="email" name="email" placeholder="example@email.com" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>電話番号<span class="required">必須</span></label>
+        <input type="tel" name="tel" placeholder="090-0000-0000" required>
+      </div>
+      <div class="form-group">
+        <label>参加日程<span class="required">必須</span></label>
+        <select name="days" required>
+          <option value="">選択してください</option>
+          <option value="both">2日間（3/13・14）― 6,000円</option>
+          <option value="day1">3月13日（土）のみ ― 4,000円</option>
+          <option value="day2">3月14日（日）のみ ― 4,000円</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>出展作品のジャンル・説明<span class="required">必須</span></label>
+      <textarea name="description" placeholder="例：布小物（ポーチ・巾着など）のハンドメイド作品を販売します。"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>作品写真または店舗写真<span class="required">必須</span></label>
+      <input type="file" name="photo" accept="image/*" required>
+      <p class="file-note">※ JPG・PNG形式、5MB以内。審査の参考にします。</p>
+    </div>
+
+    <div class="form-group">
+      <label>その他・ご質問</label>
+      <textarea name="message" placeholder="ご不明な点があればご記入ください。"></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">申し込みを送信する</button>
+  </form>
+</section>
+
+<!-- フッター -->
+<footer>
+  <div class="footer-title">第13回 岩村城下町ひなクラフトフェア 2027</div>
+  <p>岐阜県恵那市岩村町西町一丁目商店街</p>
+  <p style="margin-top:8px;">お問い合わせ：<a href="mailto:iwamura.craft@gmail.com" style="color:var(--pink);">iwamura.craft@gmail.com</a></p>
+  <p style="margin-top:16px;">© 2027 ひなクラフト展実行委員会</p>
+</footer>
+
+<script>
+  document.getElementById('applicationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = this.name.value;
+    const email = this.email.value;
+    const tel = this.tel.value;
+    const days = this.days.value;
+    const description = this.description.value;
+    const message = this.message ? this.message.value : '';
+
+    const daysLabel = {
+      both: '2日間（3/13・14）― 6,000円',
+      day1: '3月13日（土）のみ ― 4,000円',
+      day2: '3月14日（日）のみ ― 4,000円'
+    }[days] || days;
+
+    const body = encodeURIComponent(
+      `【ひなクラフト展2027 出展申し込み】\n\n` +
+      `お名前（屋号）: ${name}\n` +
+      `メールアドレス: ${email}\n` +
+      `電話番号: ${tel}\n` +
+      `参加日程: ${daysLabel}\n` +
+      `作品説明: ${description}\n` +
+      `その他: ${message}\n\n` +
+      `※ 写真は別途添付してください。`
+    );
+
+    const subject = encodeURIComponent('【ひなクラフト展2027】出展申し込み');
+    window.location.href = `mailto:iwamura.craft@gmail.com?subject=${subject}&body=${body}`;
+  });
+</script>
+
+</body>
+</html>
