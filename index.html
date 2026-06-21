@@ -535,9 +535,9 @@
         <label>参加日程<span class="required">必須</span></label>
         <select name="days" required>
           <option value="">選択してください</option>
-          <option value="both">2日間（3/13・14）― 6,000円</option>
-          <option value="day1">3月13日（土）のみ ― 4,000円</option>
-          <option value="day2">3月14日（日）のみ ― 4,000円</option>
+          <option value="both">2日間（3/27・28）― 6,000円</option>
+          <option value="day1">3月27日（土）のみ ― 4,000円</option>
+          <option value="day2">3月28日（日）のみ ― 4,000円</option>
         </select>
       </div>
     </div>
@@ -581,9 +581,9 @@
     const message = this.message ? this.message.value : '';
 
     const daysLabel = {
-      both: '2日間（3/13・14）― 6,000円',
-      day1: '3月13日（土）のみ ― 4,000円',
-      day2: '3月14日（日）のみ ― 4,000円'
+      both: '2日間（3/27・28）― 6,000円',
+      day1: '3月27日（土）のみ ― 4,000円',
+      day2: '3月28日（日）のみ ― 4,000円'
     }[days] || days;
 
     const body = encodeURIComponent(
